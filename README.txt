@@ -99,6 +99,6 @@ por una excepción al tratar de hacer un cálculo o si el usuario emplea una sin
 
 Por último se ha desarrollado una simulación de tráfico de clientes multihilo, que generan un tráfico de 
 peticiones ficticias. Dicho tráfico sigue una distribución exponencial, cuya tasa puede regularse, al igual
-que lacantidad de clientes y laduración de la simulación. Dicha simulación se ha implementado para estudiar la escalabilidad
+que la cantidad de clientes y laduración de la simulación. Dicha simulación se ha implementado para estudiar la escalabilidad
 del problema y su adaptación al aumento de carga de trabajo.
 
