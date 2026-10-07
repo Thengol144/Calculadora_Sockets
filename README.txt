@@ -82,11 +82,11 @@ al servidor y que este se limite unicamente a realizar las operaciones y devolve
 En relación con lo anterior se ha decidido que las respuesta que da el servidor a operaciones que hayan
 terminado provocando un error contengan la palabra "ERROR", con el objetivo de facilitarle al cliente la
 identificación de errores relevante para la gestión del acumulador. De esta manera el servidor no guarda
-ningún estado relativo a cada cliente, así que procesa cada petición de manera independiente.
+ningún estado relativo a cada cliente, así que procesa cada petición de manera independiente. 
 
 Cabe recalcar que el hecho de emplear etiquetas hace que haya una sobrecarga al enviar datos que no corresponden 
 al resultado, ya que es equivalente a emplear cabeceras de control. No obstante el uso de cabeceras en esta práctica 
-particular no supone un problema debido a la simplicidad del problema a resolver, pero este aspecto sí se debería tener
+particular no supone un problema debido a la simplicidad del problema a resolver, pero este aspecto sí se debería tener 
 en cuenta en casos reales donde la sobrecarga debe ser lo mínima posible en afán de mejorar el rendimiento de la 
 transmisión de datos y el aprovechamiento del sistema, especialmente si se trata de uno distribuido.
 
