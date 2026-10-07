@@ -74,7 +74,7 @@ El comando clear reinicia el valor del acumulador a 0.
 
 Para el uso de la funcionalidad del acumulador se ha decidido gestionarlo de manera local
 por el cliente, quien es responsable de la gestión, la cual consiste en actualizar el valor
-únicamente cuando se devuelven resultados carentes de errores, demanera que el valor del
+únicamente cuando se devuelven resultados carentes de errores, de manera que el valor del
 acumulador corresponde al del último resultado válido, se ha tomado esta decisión debido a que
 no se ha considerado necesario incluir la logica del acumulador en las peticiones que se le mandan
 al servidor y que este se limite unicamente a realizar las operaciones y devolver sus resultados.
@@ -84,16 +84,21 @@ terminado provocando un error contengan la palabra "ERROR", con el objetivo de f
 identificación de errores relevante para la gestión del acumulador. De esta manera el servidor no guarda
 ningún estado relativo a cada cliente, así que procesa cada petición de manera independiente.
 
-Cabe recalcar que el hecho de emplear etiquetas hace que haya una sobrecarga al enviar datos que no corresponden al resultado, ya que es equivalente a emplear 
-cabeceras de control.
+Cabe recalcar que el hecho de emplear etiquetas hace que haya una sobrecarga al enviar datos que no corresponden 
+al resultado, ya que es equivalente a emplear cabeceras de control. No obstante el uso de cabeceras en esta práctica 
+particular no supone un problema debido a la simplicidad del problema a resolver, pero este aspecto sí se debería tener
+en cuenta en casos reales donde la sobrecarga debe ser lo mínima posible en afán de mejorar el rendimiento de la 
+transmisión de datos y el aprovechamiento del sistema, especialmente si se trata de uno distribuido.
 
 En el servidor se han protegido las variables locales relativas a las estadísticas de actividad mediante Locks 
-para asegurar la exclusión mutua para dichos valores.
+para asegurar la exclusión mutua para dichos valores, asegurando así la integridad de la información que maneja el servidor.
 
 El servidor en la función "calcular" gestiona los errores sin interrumpir la ejecución de las peticiones de
-cliente mediante el uso del prefijo "ERROR" en sus respuestas para operaciones erróneas.
+cliente mediante el uso del prefijo "ERROR" en sus respuestas para operaciones erróneas, sin importar si el error es ocasionado
+por una excepción al tratar de hacer un cálculo o si el usuario emplea una sintaxis incorrecta.
 
 Por último se ha desarrollado una simulación de tráfico de clientes multihilo, que generan un tráfico de 
 peticiones ficticias. Dicho tráfico sigue una distribución exponencial, cuya tasa puede regularse, al igual
-que lacantidad de clientes y laduración de la simulación.
+que lacantidad de clientes y laduración de la simulación. Dicha simulación se ha implementado para estudiar la escalabilidad
+del problema y su adaptación al aumento de carga de trabajo.
 
